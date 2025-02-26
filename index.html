@@ -12,8 +12,7 @@
     <div class="board">
       <!-- Ludo Board Cells -->
       <div class="cell"></div>
-      <!-- Repeat for all cells (56 cells total) -->
-      <!-- You can dynamically generate these cells using JavaScript -->
+      <!-- Repeat for all cells -->
     </div>
     <div class="players">
       <div class="player" data-player="1">Player 1</div>
@@ -23,17 +22,18 @@
     </div>
     <div class="controls">
       <div class="dice" id="dice">
-        <img src="images/dice.png" alt="Dice">
+        <img src="images/dice-1.png" alt="Dice" id="diceImage">
       </div>
       <button id="save">Save Game</button>
       <button id="load">Load Game</button>
     </div>
     <div class="message" id="message"></div>
   </div>
-  <!-- Audio Elements -->
   <audio id="diceSound" src="sounds/dice-roll.mp3"></audio>
   <audio id="moveSound" src="sounds/token-move.mp3"></audio>
   <audio id="backgroundMusic" src="sounds/background-music.mp3" loop></audio>
+  <audio id="winSound" src="sounds/win-sound.mp3"></audio>
+  <audio id="clickSound" src="sounds/click-sound.mp3"></audio>
   <script src="script.js"></script>
 </body>
 </html>
