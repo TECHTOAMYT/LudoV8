@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ludo Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Ludo Game</h1>
+    <div class="board">
+      <!-- Ludo Board Cells -->
+      <div class="cell"></div>
+      <!-- Repeat for all cells (56 cells total) -->
+      <!-- You can dynamically generate these cells using JavaScript -->
+    </div>
+    <div class="players">
+      <div class="player" data-player="1">Player 1</div>
+      <div class="player" data-player="2">Player 2</div>
+      <div class="player" data-player="3">Player 3</div>
+      <div class="player" data-player="4">Player 4</div>
+    </div>
+    <div class="controls">
+      <div class="dice" id="dice">
+        <img src="images/dice.png" alt="Dice">
+      </div>
+      <button id="save">Save Game</button>
+      <button id="load">Load Game</button>
+    </div>
+    <div class="message" id="message"></div>
+  </div>
+  <!-- Audio Elements -->
+  <audio id="diceSound" src="sounds/dice-roll.mp3"></audio>
+  <audio id="moveSound" src="sounds/token-move.mp3"></audio>
+  <audio id="backgroundMusic" src="sounds/background-music.mp3" loop></audio>
+  <script src="script.js"></script>
+</body>
+</html>
