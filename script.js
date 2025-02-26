@@ -1,3 +1,4 @@
+const board = document.getElementById('board');
 const dice = document.getElementById('dice');
 const diceImage = document.getElementById('diceImage');
 const message = document.getElementById('message');
@@ -17,6 +18,15 @@ let players = {
   3: { position: 0 },
   4: { position: 0 },
 };
+
+// Generate Ludo Board
+function generateBoard() {
+  for (let i = 0; i < 225; i++) { // 15x15 grid
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    board.appendChild(cell);
+  }
+}
 
 // Play background music
 backgroundMusic.play();
@@ -137,3 +147,6 @@ loadButton.addEventListener('click', () => {
   }
   clickSound.play();
 });
+
+// Initialize Board
+generateBoard();
