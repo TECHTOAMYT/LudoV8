@@ -28,6 +28,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 .players {
@@ -35,6 +36,59 @@ body {
   justify-content: space-around;
   margin: 20px 0;
 }
+
+.player {
+  padding: 10px;
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.dice {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.dice img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+button, select {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+/* Mobile Optimization */
+@media (max-width: 600px) {
+  .board {
+    grid-template-columns: repeat(15, 20px);
+    grid-template-rows: repeat(15, 20px);
+  }
+
+  .cell {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dice {
+    width: 80px;
+    height: 80px;
+  }
+}}
 
 .player {
   padding: 10px;
