@@ -1,0 +1,74 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.game-container {
+  text-align: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(7, 50px);
+  grid-template-rows: repeat(7, 50px);
+  gap: 2px;
+  margin: 20px auto;
+  background-image: url('images/ludo-board.png');
+  background-size: cover;
+  width: 350px;
+  height: 350px;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+
+.players {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.player {
+  padding: 10px;
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.dice {
+  padding: 10px;
+  background-color: #007bff;
+  cursor: pointer;
+}
+
+.dice img {
+  width: 40px;
+  height: 40px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
