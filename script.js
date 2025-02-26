@@ -3,6 +3,7 @@ const diceImage = document.getElementById('diceImage');
 const message = document.getElementById('message');
 const saveButton = document.getElementById('save');
 const loadButton = document.getElementById('load');
+const aiDifficulty = document.getElementById('aiDifficulty');
 const diceSound = document.getElementById('diceSound');
 const moveSound = document.getElementById('moveSound');
 const winSound = document.getElementById('winSound');
@@ -22,33 +23,66 @@ backgroundMusic.play();
 
 // Dice Roll Function
 dice.addEventListener('click', () => {
-  // Play dice roll sound
-  diceSound.play();
+  if (currentPlayer === 1) { // Only allow human player to roll
+    diceSound.play();
+    rollDice();
+  }
+});
 
-  // Simulate dice roll animation
+// Roll Dice Logic
+function rollDice() {
   let rolls = 0;
   const rollInterval = setInterval(() => {
     const randomFace = Math.floor(Math.random() * 6) + 1;
     diceImage.src = `images/dice-${randomFace}.png`;
     rolls++;
 
-    // Stop after 5 rolls
     if (rolls > 5) {
       clearInterval(rollInterval);
       const finalRoll = Math.floor(Math.random() * 6) + 1;
       diceImage.src = `images/dice-${finalRoll}.png`;
       message.textContent = `Player ${currentPlayer} rolled a ${finalRoll}`;
       movePlayer(currentPlayer, finalRoll);
-      currentPlayer = currentPlayer === 4 ? 1 : currentPlayer + 1;
+      if (finalRoll !== 6) {
+        currentPlayer = currentPlayer === 4 ? 1 : currentPlayer + 1;
+      }
+      if (currentPlayer !== 1) {
+        setTimeout(() => aiMove(currentPlayer), 1000);
+      }
     }
-  }, 100); // Roll every 100ms
-});
+  }, 100);
+}
+
+// AI Move Logic
+function aiMove(player) {
+  const difficulty = aiDifficulty.value;
+  let steps;
+
+  if (difficulty === 'easy') {
+    steps = Math.floor(Math.random() * 6) + 1;
+  } else if (difficulty === 'medium') {
+    steps = Math.min(6, 56 - players[player].position);
+  } else if (difficulty === 'hard') {
+    steps = Math.min(6, 56 - players[player].position);
+    if (steps === 0) steps = 1;
+  }
+
+  diceImage.src = `images/dice-${steps}.png`;
+  message.textContent = `Player ${player} rolled a ${steps}`;
+  movePlayer(player, steps);
+  if (steps !== 6) {
+    currentPlayer = currentPlayer === 4 ? 1 : currentPlayer + 1;
+  }
+  if (currentPlayer !== 1) {
+    setTimeout(() => aiMove(currentPlayer), 1000);
+  }
+}
 
 // Move Player Function
 function movePlayer(player, steps) {
   players[player].position += steps;
   if (players[player].position > 56) {
-    players[player].position = 56; // End of board
+    players[player].position = 56;
     message.textContent = `Player ${player} has reached the end!`;
     winSound.play();
   }
